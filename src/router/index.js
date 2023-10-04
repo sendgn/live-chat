@@ -1,12 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
-const routes = [
-
-];
+import WelcomeView from '@/views/WelcomeView.vue';
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'welcome',
+      component: WelcomeView
+    },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   component: () => import('../views/AboutView.vue')
+    // }
+  ]
 });
 
 export default router;
