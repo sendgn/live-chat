@@ -19,7 +19,10 @@
       v-model="password"
     >
     <div class="error">{{ error }}</div>
-    <button>Sign up</button>
+    <button :disabled="loading">
+      <span v-if="loading" class="spin"></span>
+      <span v-else>Sign up</span>
+    </button>
   </form>
 </template>
 
@@ -35,13 +38,14 @@ export default {
       email,
       password,
       error,
+      loading
     } = storeToRefs(userStore);
 
     const handleSubmit = () => {
       userStore.signup(displayName.value, email.value, password.value);
     }
 
-    return { displayName, email, password, error, handleSubmit };
+    return { displayName, email, password, error, loading, handleSubmit };
   }
 }
 </script>

@@ -35,6 +35,13 @@ button {
 button:focus {
   outline: 2px solid #444;
 }
+button:disabled {
+  background: #eee;
+  cursor: default;
+}
+button:active {
+  outline: none;
+}
 
 /* form styles */
 form {
@@ -59,4 +66,19 @@ input::placeholder {
 }
 label {
   display: block;
+}
+
+/* spinner */
+.spin {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: #5ae4ca;
+  animation: spin 1s ease infinite;
+}
+@keyframes spin {
+  to { transform: rotateZ(360deg); }
 }

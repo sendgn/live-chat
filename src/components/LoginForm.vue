@@ -12,23 +12,28 @@
       placeholder="Password"
       v-model="password"
     >
-    <button>Log in</button>
+    <div class="error">{{ error }}</div>
+    <button :disabled="loading">
+      <span v-if="loading" class="spin"></span>
+      <span v-else>Log in</span>
+    </button>
   </form>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/userStore';
+
 export default {
   setup() {
-    // refs
-    const email = ref('');
-    const password = ref('');
+    const userStore = useUserStore();
+    const { email, password, error, loading } = storeToRefs(userStore);
 
     const handleSubmit = () => {
-      console.log(email.value, password.value);
+      userStore.login(email.value, password.value);
     }
 
-    return { email, password, handleSubmit };
+    return { email, password, error, loading, handleSubmit };
   }
 }
 </script>

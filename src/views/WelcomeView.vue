@@ -4,14 +4,14 @@
       <h2>Login</h2>
       <LoginForm />
       <p>No account yet?
-        <span @click="showLogin = false">Signup</span> instead
+        <span @click="switchForm">Sign up</span> instead
       </p>
     </div>
     <div v-else>
       <h2>Signup</h2>
       <SignupForm />
       <p>Already registered?
-        <span @click="showLogin = true">Login</span> instead
+        <span @click="switchForm">Log in</span> instead
       </p>
     </div>
   </div>
@@ -19,15 +19,22 @@
 
 <script>
 import { ref } from 'vue';
+import { useUserStore } from '@/stores/userStore';
 import SignupForm from '../components/SignupForm.vue';
 import LoginForm from '../components/LoginForm.vue';
 
 export default {
   components: { SignupForm, LoginForm },
   setup() {
-    const showLogin = ref(false);
+    const userStore = useUserStore();
+    const showLogin = ref(true);
 
-    return { showLogin };
+    const switchForm = () => {
+      showLogin.value = !showLogin.value;
+      userStore.$reset();
+    }
+
+    return { showLogin, switchForm };
   }
 }
 </script>
