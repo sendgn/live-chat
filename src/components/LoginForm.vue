@@ -17,18 +17,18 @@
 </template>
 
 <script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      // refs
-      const email = ref('');
-      const password = ref('');
+import { ref } from 'vue';
+export default {
+  setup() {
+    // refs
+    const email = ref('');
+    const password = ref('');
 
-      const handleSubmit = () => {
-        console.log(email.value, password.value);
-      }
-
-      return { email, password, handleSubmit };
+    const handleSubmit = () => {
+      console.log(email.value, password.value);
     }
+
+    return { email, password, handleSubmit };
   }
+}
 </script>
