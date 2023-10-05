@@ -18,37 +18,30 @@
       placeholder="Password"
       v-model="password"
     >
+    <div class="error">{{ error }}</div>
     <button>Sign up</button>
   </form>
 </template>
 
 <script>
-import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/authStore';
+import { useUserStore } from '@/stores/userStore';
 
 export default {
   setup() {
-    const authStore = useAuthStore();
+    const userStore = useUserStore();
     const {
       displayName,
       email,
+      password,
       error,
-    } = storeToRefs(authStore);
-
-    const password = ref('');
+    } = storeToRefs(userStore);
 
     const handleSubmit = () => {
-      authStore.signup(displayName.value, email.value, password.value);
+      userStore.signup(displayName.value, email.value, password.value);
     }
 
-    return {
-      displayName,
-      email,
-      error,
-      password,
-      handleSubmit
-    };
+    return { displayName, email, password, error, handleSubmit };
   }
 }
 </script>

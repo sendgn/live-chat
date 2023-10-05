@@ -25,7 +25,7 @@ import LoginForm from '../components/LoginForm.vue';
 export default {
   components: { SignupForm, LoginForm },
   setup() {
-    const showLogin = ref(true);
+    const showLogin = ref(false);
 
     return { showLogin };
   }

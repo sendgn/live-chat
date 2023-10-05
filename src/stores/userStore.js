@@ -5,29 +5,30 @@ import {
   updateProfile
 } from 'firebase/auth';
 
-export const useAuthStore = defineStore('authStore', {
+export const useUserStore = defineStore({
+  id: 'userStore',
   state: () => ({
     displayName: '',
     email: '',
+    password: '',
     error: null
   }),
   actions: {
     async signup(displayName, email, password) {
       this.error = null;
       try {
-        const resp = await createUserWithEmailAndPassword(
+        const res = await createUserWithEmailAndPassword(
           auth, email, password
         );
-        if (!resp) {
+        if (!res) {
           throw new Error('Could not complete the signup');
         }
-        await updateProfile(resp.user, { displayName });
-        this.displayName = displayName;
+        await updateProfile(res.user, { displayName });
         this.error = null;
         console.log('User signed up');
       } catch (err) {
         this.error = err.message;
-        console.log(this.error);
+        console.log(err.message)
       }
     }
   }
