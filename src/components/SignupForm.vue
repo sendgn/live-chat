@@ -24,18 +24,31 @@
 
 <script>
 import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useAuthStore } from '@/stores/authStore';
+
 export default {
   setup() {
-    // refs
-    const displayName = ref('');
-    const email = ref('');
+    const authStore = useAuthStore();
+    const {
+      displayName,
+      email,
+      error,
+    } = storeToRefs(authStore);
+
     const password = ref('');
 
     const handleSubmit = () => {
-      console.log(displayName.value, email.value, password.value);
+      authStore.signup(displayName.value, email.value, password.value);
     }
 
-    return { displayName, email, password, handleSubmit };
+    return {
+      displayName,
+      email,
+      error,
+      password,
+      handleSubmit
+    };
   }
 }
 </script>
