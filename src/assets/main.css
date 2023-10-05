@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
+* {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
 body {
   background: #e1eeff;
   color: #444;
   margin: 0;
-}
-body * {
-  font-family: "Open Sans", sans-serif;
 }
 .container {
   width: 90%;
@@ -28,4 +29,26 @@ button {
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
+  cursor: pointer;
+  min-width: 100px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  color: #444;
+}
+input:focus {
+  outline: 2px solid #5ae4ca;
+  border: 1px solid transparent;
+}
+input::placeholder {
+  color: #999;
 }
