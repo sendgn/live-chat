@@ -31,7 +31,7 @@ import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/userStore';
 
 export default {
-  setup() {
+  setup(props, context) {
     const userStore = useUserStore();
     const {
       displayName,
@@ -41,8 +41,11 @@ export default {
       loading
     } = storeToRefs(userStore);
 
-    const handleSubmit = () => {
-      userStore.signup(displayName.value, email.value, password.value);
+    const handleSubmit = async () => {
+      await userStore.signup(displayName.value, email.value, password.value);
+      if (!error.value) {
+        context.emit('signup');
+      }
     }
 
     return { displayName, email, password, error, loading, handleSubmit };
