@@ -20,7 +20,7 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/userStore';
+import { useUserStore } from '../stores/userStore';
 import SignupForm from '../components/SignupForm.vue';
 import LoginForm from '../components/LoginForm.vue';
 
@@ -45,28 +45,28 @@ export default {
 }
 </script>
 
-<style scoped>
-  .welcome {
-    text-align: center;
-    padding: 20px 0;
-  }
-  .welcome form {
-    width: 300px;
-    margin: 20px auto;
-  }
-  .welcome label {
-    margin: 20px 0 10px;
-  }
-  .welcome span {
-    font-weight: bold;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  .welcome span:hover {
-    text-decoration: none;
-  }
-  .welcome p {
-    font-size: 0.9em;
-    margin-top: 20px;
-  }
+<style>
+.welcome {
+  text-align: center;
+  padding: 30px 0;
+}
+.welcome form {
+  width: 300px;
+  margin: 20px auto;
+}
+.welcome label {
+  margin: 20px 0 10px;
+}
+.welcome span {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.welcome span:hover {
+  text-decoration: none;
+}
+.welcome p {
+  font-size: 0.9em;
+  margin-top: 20px;
+}
 </style>

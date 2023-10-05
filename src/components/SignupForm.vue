@@ -28,7 +28,7 @@
 
 <script>
 import { storeToRefs } from 'pinia';
-import { useUserStore } from '@/stores/userStore';
+import { useUserStore } from '../stores/userStore';
 
 export default {
   setup(props, context) {
