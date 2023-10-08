@@ -1,6 +1,6 @@
 # live-chat
 
-Live chat room using vue3, pinia and firebase
+Live chat room using vue3, pinia, vue-router4 and firebase
 
 ## Recommended IDE Setup
 
