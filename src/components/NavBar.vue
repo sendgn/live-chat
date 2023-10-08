@@ -4,13 +4,31 @@
       <p>Hey there... display name here</p>
       <p class="email">Currently logged in as... email</p>
     </div>
-    <button>Log out</button>
+    <button @click="handleClick" :disabled="loading">
+      <span v-if="loading" class="spin"></span>
+      <span v-else>Log out</span>
+    </button>
   </nav>
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '../stores/userStore';
+
 export default {
-  
+  setup() {
+    const userStore = useUserStore();
+    const { error, loading } = storeToRefs(userStore);
+
+    const handleClick = async () => {
+      await userStore.logout();
+      if (!error.value) {
+        console.log('123');
+      }
+    }
+
+    return { error, loading, handleClick };
+  }
 }
 </script>
 

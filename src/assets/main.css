@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+/* base */
 * {
   font-family: inherit;
   margin: 0;
@@ -11,6 +12,8 @@ body {
   background: #e4e1ff;
   color: #444;
 }
+
+/* utilities */
 .container {
   width: 90%;
   max-width: 960px;
@@ -23,6 +26,8 @@ body {
   color: #ff3f80;
   font-size: 14px;
 }
+
+/* buttons */
 button {
   text-decoration: none;
   background: #5ae4ca;
@@ -45,7 +50,7 @@ button:active {
   outline: none;
 }
 
-/* form styles */
+/* forms */
 form {
   display: flex;
   flex-direction: column;

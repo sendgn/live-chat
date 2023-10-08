@@ -3,7 +3,7 @@ import { auth } from '../firebase/config';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
+  updateProfile, signOut
 } from 'firebase/auth';
 
 export const useUserStore = defineStore({
@@ -50,6 +50,18 @@ export const useUserStore = defineStore({
       } catch (err) {
         this.error = 'Incorrect login credentials';
         console.log(err.message);
+      }
+      this.loading = false;
+    },
+    async logout() {
+      this.loading = true;
+      try {
+        await signOut(auth);
+        this.error = null;
+        console.log('User logged out');
+      } catch (err) {
+        console.log(err.message);
+        this.error = err.message; 
       }
       this.loading = false;
     }
