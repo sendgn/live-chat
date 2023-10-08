@@ -25,7 +25,7 @@ export default {
     const handleClick = async () => {
       await userStore.logout();
       if (!error.value) {
-        console.log('123123');
+        console.log('123');
       }
     }
 

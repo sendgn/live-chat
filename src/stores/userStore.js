@@ -3,8 +3,7 @@ import { auth } from '../firebase/config';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile, signOut,
-  onAuthStateChanged
+  updateProfile, signOut
 } from 'firebase/auth';
 
 export const useUserStore = defineStore({
@@ -20,12 +19,11 @@ export const useUserStore = defineStore({
   actions: {
     setUser() {
       this.loading = true;
-      onAuthStateChanged(auth, (user) => {
+      auth.onAuthStateChanged((user) => {
         this.user = user;
         if (user) {
-          const { displayName, email } = user;
-          this.displayName = displayName;
-          this.email = email;
+          this.displayName = user.displayName;
+          this.email = user.email;
         }
         console.log('User state change. Current user is:', this.user);
       });
