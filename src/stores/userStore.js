@@ -3,7 +3,8 @@ import { auth } from '../firebase/config';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile, signOut
+  updateProfile, signOut,
+  onAuthStateChanged
 } from 'firebase/auth';
 
 export const useUserStore = defineStore({
@@ -17,6 +18,19 @@ export const useUserStore = defineStore({
     loading: false,
   }),
   actions: {
+    setUser() {
+      this.loading = true;
+      onAuthStateChanged(auth, (user) => {
+        this.user = user;
+        if (user) {
+          const { displayName, email } = user;
+          this.displayName = displayName;
+          this.email = email;
+        }
+        console.log('User state change. Current user is:', this.user);
+      });
+      this.loading = false;
+    },
     async signup(displayName, email, password) {
       this.loading = true;
       try {
@@ -57,6 +71,7 @@ export const useUserStore = defineStore({
       this.loading = true;
       try {
         await signOut(auth);
+        this.user = null;
         this.error = null;
         console.log('User logged out');
       } catch (err) {

@@ -1,8 +1,8 @@
 <template>
-  <nav>
+  <nav v-if="user">
     <div>
-      <p>Hey there... display name here</p>
-      <p class="email">Currently logged in as... email</p>
+      <p>Hey there <b>{{ displayName }}</b></p>
+      <p class="email">Currently logged in as <b>{{ email }}</b></p>
     </div>
     <button @click="handleClick" :disabled="loading">
       <span v-if="loading" class="spin"></span>
@@ -18,16 +18,18 @@ import { useUserStore } from '../stores/userStore';
 export default {
   setup() {
     const userStore = useUserStore();
-    const { error, loading } = storeToRefs(userStore);
+    const {
+      user, displayName, email, error, loading
+    } = storeToRefs(userStore);
 
     const handleClick = async () => {
       await userStore.logout();
       if (!error.value) {
-        console.log('123');
+        console.log('123123');
       }
     }
 
-    return { error, loading, handleClick };
+    return { user, displayName, email, error, loading, handleClick };
   }
 }
 </script>
