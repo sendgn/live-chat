@@ -6,10 +6,17 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
-const pinia = createPinia();
-const app = createApp(App);
+import { auth } from './firebase/config';
 
-app.use(pinia);
-app.use(router);
+let app;
 
-app.mount('#app');
+// render the app only once on page (re)load and when the user
+// has already been received from Firebase
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = createApp(App)
+      .use(createPinia())
+      .use(router)
+      .mount('#app');
+  }
+});
