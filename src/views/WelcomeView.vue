@@ -69,4 +69,7 @@ export default {
   font-size: 0.9em;
   margin-top: 20px;
 }
+.welcome button span {
+  text-decoration: none;
+}
 </style>
