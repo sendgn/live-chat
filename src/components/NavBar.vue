@@ -13,20 +13,20 @@
 
 <script>
 import { storeToRefs } from 'pinia';
+import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
 
 export default {
   setup() {
     const userStore = useUserStore();
+    const router = useRouter();
     const {
       user, displayName, email, error, loading
     } = storeToRefs(userStore);
 
     const handleClick = async () => {
       await userStore.logout();
-      if (!error.value) {
-        console.log('123');
-      }
+      // router.push({ name: 'welcome' });
     }
 
     return { user, displayName, email, error, loading, handleClick };

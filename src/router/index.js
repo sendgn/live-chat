@@ -1,5 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useUserStore } from '../stores/userStore';
 import WelcomeView from '../views/WelcomeView.vue';
+
+// auth guard
+const requireAuth = (to, from, next) => {
+  const { user } = useUserStore();
+  console.log('Current user in auth guard:', user);
+  if (!user) {
+    next({ name: 'welcome' });
+  } else {
+    next();
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +24,8 @@ const router = createRouter({
     {
       path: '/chatroom',
       name: 'chatroom',
-      component: () => import('@/views/ChatRoomView.vue')
+      component: () => import('../views/ChatRoomView.vue'),
+      beforeEnter: requireAuth
     }
   ]
 });
