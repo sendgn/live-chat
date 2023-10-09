@@ -4,7 +4,7 @@
       <p>Hey there <b>{{ displayName }}</b></p>
       <p class="email">Currently logged in as <b>{{ email }}</b></p>
     </div>
-    <button @click="handleClick" :disabled="loading">
+    <button @click="userStore.logout()" :disabled="loading">
       <span v-if="loading" class="spin"></span>
       <span v-else>Log out</span>
     </button>
@@ -13,23 +13,16 @@
 
 <script>
 import { storeToRefs } from 'pinia';
-import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
 
 export default {
   setup() {
     const userStore = useUserStore();
-    const router = useRouter();
     const {
-      user, displayName, email, error, loading
+      user, displayName, email, error, loading,
     } = storeToRefs(userStore);
 
-    const handleClick = async () => {
-      await userStore.logout();
-      // router.push({ name: 'welcome' });
-    }
-
-    return { user, displayName, email, error, loading, handleClick };
+    return { user, displayName, email, error, loading, userStore };
   }
 }
 </script>
