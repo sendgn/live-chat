@@ -10,9 +10,9 @@ import { auth } from './firebase/config';
 
 let app;
 
-// render the app only once on page (re)load and when the user
-// has already been received from Firebase
+// when the user has already been received from Firebase
 auth.onAuthStateChanged(() => {
+  // render the app only once on page load/refresh
   if (!app) {
     app = createApp(App)
       .use(createPinia())
