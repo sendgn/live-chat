@@ -3,7 +3,6 @@ import {
   getFirestore, serverTimestamp
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
-import { useUserStore } from '../stores/userStore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQ3xx-0xxeQnPwyIe_KGFqVICsJfL_Puc",
