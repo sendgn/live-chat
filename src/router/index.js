@@ -12,13 +12,24 @@ const requireAuth = (to, from, next) => {
   }
 }
 
+// welcome guard
+const requireNoAuth = (to, from, next) => {
+  const { user } = useUserStore();
+  if (user) {
+    next({ name: 'chatroom' });
+  } else {
+    next();
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'welcome',
-      component: WelcomeView
+      component: WelcomeView,
+      beforeEnter: requireNoAuth
     },
     {
       path: '/chatroom',
