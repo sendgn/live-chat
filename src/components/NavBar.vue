@@ -1,10 +1,10 @@
 <template>
   <nav v-if="user">
     <div>
-      <p>Hey there <b>{{ displayName }}</b></p>
-      <p class="email">Currently logged in as <b>{{ email }}</b></p>
+      <p>Hey there <b>{{ user.displayName }}</b></p>
+      <p class="email">Currently logged in as <b>{{ user.email }}</b></p>
     </div>
-    <button @click="userStore.logout()" :disabled="loading">
+    <button @click="handleClick" :disabled="loading">
       <span v-if="loading" class="spin"></span>
       <span v-else>Log out</span>
     </button>
@@ -18,11 +18,16 @@ import { useUserStore } from '../stores/userStore';
 export default {
   setup() {
     const userStore = useUserStore();
+
     const {
-      user, displayName, email, error, loading,
+      user, error, loading
     } = storeToRefs(userStore);
 
-    return { user, displayName, email, error, loading, userStore };
+    const handleClick = async () => {
+      await userStore.logout();
+    }
+
+    return { user, error, loading, handleClick };
   }
 }
 </script>

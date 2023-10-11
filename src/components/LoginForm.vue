@@ -21,13 +21,17 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '../stores/userStore';
 
 export default {
   setup(props, context) {
     const userStore = useUserStore();
-    const { email, password, error, loading } = storeToRefs(userStore);
+    const { error, loading } = storeToRefs(userStore);
+
+    const email = ref('');
+    const password = ref('');
 
     const handleSubmit = async () => {
       await userStore.login(email.value, password.value);
