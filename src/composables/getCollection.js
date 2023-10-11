@@ -1,6 +1,6 @@
 // to set up a listener to get the documents
 
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { db } from '../firebase/config';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 
@@ -11,7 +11,8 @@ const getCollection = (col) => {
   const colRef = collection(db, col);
   const q = query(colRef, orderBy('createdAt'));
 
-  onSnapshot(q, (snap) => {
+  const unsub = onSnapshot(q, (snap) => {
+    console.log('snapshot');
     let results = [];
     snap.docs.forEach((doc) => {
       // to wait untill we get back actual createdAt from the server
@@ -25,6 +26,14 @@ const getCollection = (col) => {
     console.log(err.message);
     documents.value = null;
     error.value = 'Could not fetch data';
+  });
+
+  // onValidate function will run
+  // when the component this is being used in unmounts
+  watchEffect((onInvalidate) => {
+    // unsub from prev collection
+    // when watcher is stopped (component unmounted)
+    onInvalidate(() => unsub());
   });
 
   return { documents, error };
