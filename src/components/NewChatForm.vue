@@ -42,10 +42,10 @@ export default {
 
 <style scoped>
   form {
-    margin: 10px;
-    align-items: unset;
+    padding: 10px;
   }
   textarea {
+    display: block;
     width: 100%;
     max-width: 100%;
     padding: 10px 10px 0 10px;

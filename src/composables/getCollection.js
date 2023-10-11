@@ -2,7 +2,7 @@
 
 import { ref } from 'vue';
 import { db } from '../firebase/config';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 const getCollection = (col) => {
   const documents = ref(null);
