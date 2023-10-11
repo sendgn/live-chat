@@ -17,8 +17,7 @@ import useCollection from '../composables/useCollection';
 
 export default {
   setup() {
-    const userStore = useUserStore();
-    const { user } = userStore;
+    const { user } = useUserStore();
     const { error, addDocument } = useCollection('messages');
 
     const message = ref('');

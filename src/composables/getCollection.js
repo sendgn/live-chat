@@ -14,6 +14,8 @@ const getCollection = (col) => {
   onSnapshot(q, (snap) => {
     let results = [];
     snap.docs.forEach((doc) => {
+      // to wait untill we get back actual createdAt from the server
+      // not the local one
       doc.data().createdAt &&
         results.push({ ...doc.data(), id: doc.id });
     });
