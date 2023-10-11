@@ -5,7 +5,6 @@ import WelcomeView from '../views/WelcomeView.vue';
 // auth guard
 const requireAuth = (to, from, next) => {
   const { user } = useUserStore();
-  console.log('Current user in auth guard:', user);
   if (!user) {
     next({ name: 'welcome' });
   } else {

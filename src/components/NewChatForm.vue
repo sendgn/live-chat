@@ -29,7 +29,7 @@ export default {
         message: message.value,
         createdAt: timestamp
       }
-      
+
       await addDocument(chat);
       if (!error.value) {
         message.value = '';

@@ -1,3 +1,5 @@
+// to do smth with the collection
+
 import { ref } from 'vue';
 import { db } from '../firebase/config';
 import { collection, addDoc } from 'firebase/firestore';
@@ -18,6 +20,6 @@ const useCollection = (col) => {
   }
 
   return { error, addDocument };
-}
+};
 
 export default useCollection;
