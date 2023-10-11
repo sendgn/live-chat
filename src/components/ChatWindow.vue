@@ -2,7 +2,7 @@
   <div class="chat-window">
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="documents" class="messages">
-      <div v-for="doc in formattedDocuments" :key="doc.id" class="single">
+      <div v-for="doc in formattedDocuments" :key="doc.id">
         <span class="created-at">{{ doc.createdAt }} ago</span>
         <span class="name">{{ doc.name }}</span>
         <span class="message">{{ doc.message }}</span>
@@ -41,12 +41,6 @@ export default {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
-.single {
-  margin: 18px 0;
-}
-.single:last-child {
-  margin-bottom: 0;
-}
 .created-at {
   display: block;
   color: #999;
@@ -58,7 +52,10 @@ export default {
   margin-right: 6px;
 }
 .messages {
-  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: 300px;
   overflow: auto;
 }
 </style>
