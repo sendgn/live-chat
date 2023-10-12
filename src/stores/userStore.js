@@ -19,7 +19,7 @@ export const useUserStore = defineStore({
       this.loading = true;
       onAuthStateChanged(auth, (user) => {
         this.user = user;
-        console.log('User state change. Current user is:', this.user);
+        // console.log('User state change. Current user is:', this.user);
       });
       this.loading = false;
     },

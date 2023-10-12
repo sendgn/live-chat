@@ -12,7 +12,6 @@ const getCollection = (col) => {
   const q = query(colRef, orderBy('createdAt'));
 
   const unsub = onSnapshot(q, (snap) => {
-    console.log('snapshot');
     let results = [];
     snap.docs.forEach((doc) => {
       // to wait untill we get back actual createdAt from the server
