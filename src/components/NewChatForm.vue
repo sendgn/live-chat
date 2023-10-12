@@ -5,8 +5,8 @@
       v-model="message"
       @keypress.enter.prevent="handleSubmit"
     ></textarea>
+    <div v-if="error" class="error">{{ error }}</div>
   </form>
-  <div v-if="error" class="error">{{ error }}</div>
 </template>
 
 <script>
@@ -54,10 +54,9 @@ export default {
     outline: none;
   }
   .error {
-    padding: 15px 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background: #ff3f80;
-    color: white;
+    width: max-content;
+    margin-left: 10px;
+    padding: 2px 10px;
+    border-left: 2px solid #ff94b7;
   }
 </style>
