@@ -2,6 +2,9 @@
 
 Live chat room using vue3, pinia, vue-router4 and firebase
 
+## Web page
+[Click here to open the web app in your browser](https://vue-firebase-sites-86455.web.app/)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
