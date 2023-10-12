@@ -1,14 +1,10 @@
-# live-chat
+# Live chat
 
-Live chat room using vue3, pinia, vue-router4 and firebase
+Live chat room made with using vue3, firebase9, pinia and vue-router4
 
-## Recommended IDE Setup
+## Deployed app
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[Click here to open the web app in your browser](https://vue-firebase-sites-86455.web.app/)
 
 ## Project Setup
 
