@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
 import WelcomeView from '../views/WelcomeView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
 
 // auth guard
 const requireAuth = (to, from, next) => {
@@ -36,6 +37,10 @@ const router = createRouter({
       name: 'chatroom',
       component: () => import('../views/ChatRoomView.vue'),
       beforeEnter: requireAuth
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: NotFoundView
     }
   ]
 });
