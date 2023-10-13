@@ -6,7 +6,7 @@
         <p class="email">
           {{ $t('navbar.logged_in_as') }} <b>{{ user.email }}</b>
         </p>
-        <div class="num-participants">no one has written anything yet 😔</div>
+        <p class="num-participants">{{ $t('navbar.num_participants') }}</p>
       </div>
     </div>
     <button @click="handleClick" :disabled="loading">
@@ -55,6 +55,7 @@ nav p.email {
 }
 .num-participants {
   margin-top: 9px;
+  margin-bottom: 0;
   padding-top: 6px;
   border-top: 1px solid #eee;
   font-size: 13px;

@@ -36,7 +36,8 @@ const messages = {
     navbar: {
       greetings: 'Hey there',
       logged_in_as: 'Currently logged in as',
-      button: 'Log out'
+      button: 'Log out',
+      num_participants: 'no one has written anything yet 😔'
     },
     chat_window: {
       error: 'Could not fetch data',
@@ -47,8 +48,8 @@ const messages = {
     welcome_view: {
       login_heading: 'Вход',
       signup_heading: 'Регистрация',
-      login_link_text: 'Войти',
-      signup_link_text: 'Зарегистрироваться',
+      login_link_text: 'Зарегистрируйтесь',
+      signup_link_text: 'Войдите',
       login_prompt: 'Еще нет аккаунта?',
       signup_prompt: 'Уже зарегистрированы?',
       instead: ''
@@ -60,24 +61,25 @@ const messages = {
     login_form: {
       error: 'Логин и/или пароль введены неправильно',
       button: 'Войти',
-      email_placeholder: 'Email',
+      email_placeholder: 'Электронная почта',
       password_placeholder: 'Пароль'
     },
     signup_form: {
       error: 'Не удалось зарегистрироваться',
       button: 'Зарегистрироваться',
       display_name_placeholder: 'Отображаемое имя',
-      email_placeholder: 'Email',
+      email_placeholder: 'Электронная почта',
       password_placeholder: 'Пароль'
     },
     new_chat_form: {
       error: 'Не удалось отправить сообщение',
-      textarea_placeholder: 'Введите сообщение и нажмите enter...'
+      placeholder: 'Введите сообщение и нажмите enter...'
     },
     navbar: {
       greetings: 'Привет, ',
       logged_in_as: 'Вы вошли в систему как',
-      button: 'Выйти'
+      button: 'Выйти',
+      num_participants: 'пока никто ничего не написал 😔'
     },
     chat_window: {
       error: 'Не удалось получить данные',
