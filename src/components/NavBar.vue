@@ -1,12 +1,17 @@
 <template>
   <nav v-if="user">
     <div>
-      <p>Hey there <b>{{ user.displayName }}</b></p>
-      <p class="email">Currently logged in as <b>{{ user.email }}</b></p>
+      <div>
+        <p>{{ $t('navbar.greetings') }} <b>{{ user.displayName }}</b></p>
+        <p class="email">
+          {{ $t('navbar.logged_in_as') }} <b>{{ user.email }}</b>
+        </p>
+        <div class="num-participants">no one has written anything yet 😔</div>
+      </div>
     </div>
     <button @click="handleClick" :disabled="loading">
       <span v-if="loading" class="spin"></span>
-      <span v-else>Log out</span>
+      <span v-else>{{ $t('navbar.button') }}</span>
     </button>
   </nav>
 </template>
@@ -37,7 +42,7 @@ nav {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 nav p {
   margin: 2px auto;
@@ -47,5 +52,12 @@ nav p {
 nav p.email {
   font-size: 14px;
   color: #999;
+}
+.num-participants {
+  margin-top: 9px;
+  padding-top: 6px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #bbb;
 }
 </style>

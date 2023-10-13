@@ -1,17 +1,19 @@
 <template>
   <div class="welcome container">
     <div v-if="showLogin">
-      <h2>Login</h2>
+      <h2>{{ $t('welcome_view.login_heading') }}</h2>
       <LoginForm @login="enterChat" />
-      <p>No account yet?
-        <span @click="switchForm">Sign up</span> instead
+      <p>{{ $t('welcome_view.login_prompt') }}
+        <span @click="switchForm">{{ $t('welcome_view.login_link_text') }}
+        </span> {{ $t('welcome_view.instead') }}
       </p>
     </div>
     <div v-else>
-      <h2>Signup</h2>
+      <h2>{{ $t('welcome_view.signup_heading') }}</h2>
       <SignupForm @signup="enterChat" />
-      <p>Already registered?
-        <span @click="switchForm">Log in</span> instead
+      <p>{{ $t('welcome_view.signup_prompt') }}
+        <span @click="switchForm">{{ $t('welcome_view.signup_link_text') }}
+        </span> {{ $t('welcome_view.instead') }}
       </p>
     </div>
   </div>

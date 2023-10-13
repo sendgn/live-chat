@@ -35,7 +35,7 @@ const router = createRouter({
     {
       path: '/chatroom',
       name: 'chatroom',
-      component: () => import('../views/ChatRoomView.vue'),
+      component: () => import('../views/ChatroomView.vue'),
       beforeEnter: requireAuth
     },
     {

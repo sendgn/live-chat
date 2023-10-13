@@ -1,7 +1,7 @@
 <template>
   <form>
     <textarea
-      placeholder="Type a message and hit enter to send..."
+      :placeholder="$t('new_chat_form.placeholder')"
       v-model="message"
       @keypress.enter.prevent="handleSubmit"
     ></textarea>

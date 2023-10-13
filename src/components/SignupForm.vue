@@ -3,25 +3,25 @@
     <input
       type="text"
       required
-      placeholder="Display name"
+      :placeholder="$t('signup_form.display_name_placeholder')"
       v-model="displayName"
     >
     <input
       type="email"
       required
-      placeholder="Email"
+      :placeholder="$t('signup_form.email_placeholder')"
       v-model="email"
     >
     <input
       type="password"
       required
-      placeholder="Password"
+      :placeholder="$t('signup_form.password_placeholder')"
       v-model="password"
     >
     <div class="error">{{ error }}</div>
     <button :disabled="loading">
       <span v-if="loading" class="spin"></span>
-      <span v-else>Sign up</span>
+      <span v-else>{{ $t('signup_form.button') }}</span>
     </button>
   </form>
 </template>

@@ -3,19 +3,19 @@
     <input
       type="email"
       required
-      placeholder="Email"
+      :placeholder="$t('login_form.email_placeholder')"
       v-model="email"
     >
     <input
       type="password"
       required
-      placeholder="Password"
+      :placeholder="$t('login_form.password_placeholder')"
       v-model="password"
     >
     <div class="error">{{ error }}</div>
     <button :disabled="loading">
       <span v-if="loading" class="spin"></span>
-      <span v-else>Log in</span>
+      <span v-else>{{ $t('login_form.button') }}</span>
     </button>
   </form>
 </template>

@@ -19,42 +19,42 @@ export const useUserStore = defineStore({
       this.loading = true;
       onAuthStateChanged(auth, (user) => {
         this.user = user;
-        // console.log('User state change. Current user is:', this.user);
       });
-      this.loading = false;
-    },
-    async signup(displayName, email, password) {
-      this.loading = true;
-      try {
-        const res = await createUserWithEmailAndPassword(
-          auth, email, password
-        );
-        if (!res) {
-          throw new Error('Could not complete the signup');
-        }
-        await updateProfile(res.user, { displayName });
-        this.user = res.user;
-        this.error = null;
-        console.log('User signed up');
-      } catch (err) {
-        this.error = err.message;
-      }
       this.loading = false;
     },
     async login(email, password) {
       this.loading = true;
+      const errorText = 'Incorrect login credentials';
       try {
         const res = await signInWithEmailAndPassword(
           auth, email, password
         );
         if (!res) {
-          throw new Error('Could not complete the signup');
+          throw new Error(errorText);
         }
         this.user = res.user;
         this.error = null;
-        console.log('User logged in');
       } catch (err) {
-        this.error = 'Incorrect login credentials';
+        this.error = errorText;
+        console.log(err.message);
+      }
+      this.loading = false;
+    },
+    async signup(displayName, email, password) {
+      this.loading = true;
+      const errorText = 'Could not complete the signup';
+      try {
+        const res = await createUserWithEmailAndPassword(
+          auth, email, password
+        );
+        if (!res) {
+          throw new Error(errorText);
+        }
+        await updateProfile(res.user, { displayName });
+        this.user = res.user;
+        this.error = null;
+      } catch (err) {
+        this.error = errorText;
         console.log(err.message);
       }
       this.loading = false;
@@ -65,9 +65,8 @@ export const useUserStore = defineStore({
         await signOut(auth);
         this.user = null;
         this.error = null;
-        console.log('User logged out');
       } catch (err) {
-        console.log(err.message);
+        console.log('Could not complete the logout');
         this.error = err.message; 
       }
       this.loading = false;

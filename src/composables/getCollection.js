@@ -3,10 +3,12 @@
 import { ref, watchEffect } from 'vue';
 import { db } from '../firebase/config';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { useI18n } from 'vue-i18n';
 
 const getCollection = (col) => {
   const documents = ref(null);
   const error = ref(null);
+  const { t } = useI18n();
 
   const colRef = collection(db, col);
   const q = query(colRef, orderBy('createdAt'));
@@ -24,7 +26,7 @@ const getCollection = (col) => {
   }, (err) => {
     console.log(err.message);
     documents.value = null;
-    error.value = 'Could not fetch data';
+    error.value = t('chat_window.error');
   });
 
   // onValidate function will run

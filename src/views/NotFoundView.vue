@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h2>Error 404. Page not found</h2>
-    <router-link :to="{ name: 'welcome' }">Go back</router-link>
+    <h2>{{ $t('not_found_view.heading') }}</h2>
+    <router-link :to="{ name: 'welcome' }">
+      {{ $t('not_found_view.link') }}
+    </router-link>
   </div>
 </template>
 
