@@ -8,7 +8,7 @@ import { useI18n } from 'vue-i18n';
 const getCollection = (col) => {
   const documents = ref(null);
   const error = ref(null);
-  const users = ref(null);
+  const numUsers = ref(0);
   const { t } = useI18n();
 
   const colRef = collection(db, col);
@@ -24,7 +24,7 @@ const getCollection = (col) => {
       doc.data().createdAt && userNames.add(doc.data().name);
     });
     documents.value = results;
-    users.value = userNames;
+    numUsers.value = userNames.size;
     error.value = null;
   }, (err) => {
     console.log(err.message);
@@ -40,7 +40,7 @@ const getCollection = (col) => {
     onInvalidate(() => unsub());
   });
 
-  return { documents, users, error };
+  return { documents, numUsers, error };
 };
 
 export default getCollection;

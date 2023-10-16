@@ -37,7 +37,7 @@ const messages = {
       greetings: 'Hey there',
       logged_in_as: 'Currently logged in as',
       button: 'Log out',
-      num_participants: 'no one has written anything yet 😔 | {n} user is participating in the conversation | {n} users is participating in the conversation'
+      num_users: 'no one has written anything yet 😔 | {n} user is participating in the conversation | {n} users are participating in the conversation'
     },
     chat_window: {
       error: 'Could not fetch data',
@@ -79,7 +79,7 @@ const messages = {
       greetings: 'Привет, ',
       logged_in_as: 'Вы вошли в систему как',
       button: 'Выйти',
-      num_participants: 'пока никто ничего не написал 😔 | В беседе участвует {n} пользователь | В беседе участвуют {n} пользователя | В беседе участвует {n} пользователей'
+      num_users: 'пока никто ничего не написал 😔 | В беседе участвует {n} пользователь | В беседе участвуют {n} пользователя | В беседе участвует {n} пользователей'
     },
     chat_window: {
       error: 'Не удалось получить данные',

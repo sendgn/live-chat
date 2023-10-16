@@ -6,8 +6,8 @@
         <p class="email">
           {{ $t('navbar.logged_in_as') }} <b>{{ user.email }}</b>
         </p>
-        <p class="num-participants">
-          {{ $t('navbar.num_participants', users.size) }}
+        <p class="num-users">
+          {{ $t('navbar.num_users', numUsers) }}
         </p>
       </div>
     </div>
@@ -26,7 +26,7 @@ import getCollection from '../composables/getCollection';
 export default {
   setup() {
     const userStore = useUserStore();
-    const { users } = getCollection('messages');
+    const { numUsers } = getCollection('messages');
 
     const {
       user, error, loading
@@ -36,7 +36,7 @@ export default {
       await userStore.logout();
     }
 
-    return { user, error, loading, handleClick, users };
+    return { user, error, loading, handleClick, numUsers };
   }
 }
 </script>
@@ -57,7 +57,7 @@ nav p.email {
   font-size: 14px;
   color: #999;
 }
-.num-participants {
+.num-users {
   margin-top: 9px;
   margin-bottom: 0;
   padding-top: 6px;
