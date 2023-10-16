@@ -1,6 +1,6 @@
 // to set up a listener to get the documents
 
-import { ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { db } from '../firebase/config';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { useI18n } from 'vue-i18n';
@@ -8,6 +8,7 @@ import { useI18n } from 'vue-i18n';
 const getCollection = (col) => {
   const documents = ref(null);
   const error = ref(null);
+  const users = ref(null);
   const { t } = useI18n();
 
   const colRef = collection(db, col);
@@ -15,13 +16,15 @@ const getCollection = (col) => {
 
   const unsub = onSnapshot(q, (snap) => {
     let results = [];
+    let userNames = new Set();
     snap.docs.forEach((doc) => {
       // to wait untill we get back actual createdAt from the server
       // not the local one
-      doc.data().createdAt &&
-        results.push({ ...doc.data(), id: doc.id });
+      doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
+      doc.data().createdAt && userNames.add(doc.data().name);
     });
     documents.value = results;
+    users.value = userNames;
     error.value = null;
   }, (err) => {
     console.log(err.message);
@@ -37,7 +40,7 @@ const getCollection = (col) => {
     onInvalidate(() => unsub());
   });
 
-  return { documents, error };
+  return { documents, users, error };
 };
 
 export default getCollection;

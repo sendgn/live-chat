@@ -6,7 +6,9 @@
         <p class="email">
           {{ $t('navbar.logged_in_as') }} <b>{{ user.email }}</b>
         </p>
-        <p class="num-participants">{{ $t('navbar.num_participants') }}</p>
+        <p class="num-participants">
+          {{ $t('navbar.num_participants', users.size) }}
+        </p>
       </div>
     </div>
     <button @click="handleClick" :disabled="loading">
@@ -19,10 +21,12 @@
 <script>
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '../stores/userStore';
+import getCollection from '../composables/getCollection';
 
 export default {
   setup() {
     const userStore = useUserStore();
+    const { users } = getCollection('messages');
 
     const {
       user, error, loading
@@ -32,7 +36,7 @@ export default {
       await userStore.logout();
     }
 
-    return { user, error, loading, handleClick };
+    return { user, error, loading, handleClick, users };
   }
 }
 </script>
