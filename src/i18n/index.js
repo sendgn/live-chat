@@ -1,5 +1,6 @@
 import { createI18n } from 'vue-i18n';
 import pluralRules from './rules/pluralization';
+import numberFormats from './rules/numbers';
 
 const messages = {
   en: {
@@ -94,5 +95,6 @@ export default createI18n({
   legacy: false,
   globalInjection: true,
   messages,
-  pluralRules
+  pluralRules,
+  numberFormats
 });
