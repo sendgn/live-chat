@@ -1,6 +1,7 @@
 import { createI18n } from 'vue-i18n';
 import pluralRules from './rules/pluralization';
 import numberFormats from './rules/numbers';
+import datetimeFormats from './rules/datetime';
 
 const messages = {
   en: {
@@ -96,5 +97,6 @@ export default createI18n({
   globalInjection: true,
   messages,
   pluralRules,
-  numberFormats
+  numberFormats,
+  datetimeFormats
 });
