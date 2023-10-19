@@ -51,6 +51,9 @@ button:active {
 }
 
 /* inputs */
+label {
+  display: block;
+}
 input {
   display: block;
   width: 100%;
@@ -67,8 +70,11 @@ input:focus {
 input::placeholder {
   color: #999;
 }
-label {
-  display: block;
+select {
+  padding: 2px 5px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 2px 3px rgba(28, 6, 49, 0.1);
 }
 
 /* spinner */
@@ -84,4 +90,13 @@ label {
 }
 @keyframes spin {
   to { transform: rotateZ(360deg); }
+}
+
+/* material symbols */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }

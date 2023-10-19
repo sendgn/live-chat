@@ -1,9 +1,13 @@
 {
+  "locale": {
+    "en": "English",
+    "ru": "Русский"
+  },
   "welcome_view": {
     "login_heading": "Вход",
     "signup_heading": "Регистрация",
-    "login_link_text": "Зарегистрируйтесь",
-    "signup_link_text": "Войдите",
+    "login_link_text": "Регистрация",
+    "signup_link_text": "Вход",
     "login_prompt": "Еще нет аккаунта?",
     "signup_prompt": "Уже зарегистрированы?",
     "instead": ""
