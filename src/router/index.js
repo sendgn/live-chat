@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
 import WelcomeView from '../views/WelcomeView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
+import Tr from '../i18n/translation';
 
 // auth guard
 const requireAuth = (to, from, next) => {
@@ -27,20 +28,27 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'welcome',
-      component: WelcomeView,
-      beforeEnter: requireNoAuth
-    },
-    {
-      path: '/chatroom',
-      name: 'chatroom',
-      component: () => import('../views/ChatroomView.vue'),
-      beforeEnter: requireAuth
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      component: NotFoundView
+      path: '/:locale?',
+      component: RouterView,
+      beforeEnter: Tr.routeMiddleware,
+      children: [
+        {
+          path: '',
+          name: 'welcome',
+          component: WelcomeView,
+          beforeEnter: requireNoAuth
+        },
+        {
+          path: 'chatroom',
+          name: 'chatroom',
+          component: () => import('../views/ChatroomView.vue'),
+          beforeEnter: requireAuth
+        },
+        {
+          path: ':pathMatch(.*)*',
+          component: NotFoundView
+        }
+      ]
     }
   ]
 });

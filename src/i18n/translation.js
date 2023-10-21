@@ -61,6 +61,18 @@ const Trans = {
     Trans.currentLocale = newLocale;
     document.querySelector('html').setAttribute('lang', newLocale); 
     localStorage.setItem('user-locale', newLocale);
+  },
+
+  async routeMiddleware(to, from, next) {
+    const paramLocale = to.params.locale;
+
+    if (!Trans.isLocaleSupported(paramLocale)) {
+      return next(Trans.guessDefaultLocale());
+    }
+
+    await Trans.switchLanguage(paramLocale);
+
+    return next();
   }
 };
 
