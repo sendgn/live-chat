@@ -1,7 +1,7 @@
 # Live chat
 
 Live chat room made with using vue3, firebase9, pinia and vue-router4.
-The app provides two languages - English and Russian by [i18n package](https://www.npmjs.com/package/i18n)
+Supported languages: English and Russian by [i18n package](https://www.npmjs.com/package/i18n)
 
 ## Deployed app
 
