@@ -13,6 +13,10 @@ const Trans = {
     i18n.global.locale.value = newLocale;
   },
 
+  get currentLocale() {
+    return i18n.global.locale.value;
+  },
+
   isLocaleSupported(locale) {
     return Trans.supportedLocales.includes(locale);
   },
@@ -73,6 +77,16 @@ const Trans = {
     await Trans.switchLanguage(paramLocale);
 
     return next();
+  },
+
+  i18nRoute(to) {
+    return {
+      ...to,
+      params: {
+        locale: Trans.currentLocale,
+        ...to.params
+      }
+    };
   }
 };
 
