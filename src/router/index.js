@@ -27,6 +27,23 @@ const requireNoAuth = (to, from, next) => {
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'welcome',
+    //   component: WelcomeView,
+    //   beforeEnter: requireNoAuth
+    // },
+    // {
+    //   path: '/chatroom',
+    //   name: 'chatroom',
+    //   component: () => import('../views/ChatroomView.vue'),
+    //   beforeEnter: requireAuth
+    // },
+    // {
+    //   path: '/:pathMatch(.*)*',
+    //   component: NotFoundView
+    // }
+
     {
       path: '/:locale?',
       component: RouterView,

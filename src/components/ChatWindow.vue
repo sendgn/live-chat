@@ -18,6 +18,7 @@ import { ref, computed, onUpdated } from 'vue';
 import { formatDistanceToNow } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import getCollection from '../composables/getCollection';
+import Tr from '../i18n/translation';
 
 export default {
   setup() {
@@ -25,10 +26,16 @@ export default {
     
     const locale = ref(null);
     
+    // ru.code === Tr.guessDefaultLocale() ? ru : null
+    // console.log(Tr.guessDefaultLocale())
+    
     const formattedDocuments = computed(() => {
       if (documents.value) {
         return documents.value.map((doc) => {
-          let time = formatDistanceToNow(doc.createdAt.toDate(), { locale: locale.value });
+          let time = formatDistanceToNow(
+            doc.createdAt.toDate(),
+            { locale: locale.value }
+          );
           return { ...doc, createdAt: time };
         });
       }
